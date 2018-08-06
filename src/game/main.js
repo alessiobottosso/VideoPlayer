@@ -2,7 +2,7 @@ game.module(
     'game.main'
 )
 .body(function() {
-    
+  
 //game.addAsset('button.png');
 
 game.createScene('Title', {
@@ -67,23 +67,40 @@ game.createScene('Main', {
     
     init: function() 
     {
+        /*
         var video = document.getElementById('video');
         if (video != null)
         {
             video.play();
         }
+        */
         
-        /*
-        this.sexTip = [game.Texture.fromFrame ('SexTips_10_00000.png')];
         var i = 0;
+        var sexTip = [];
         
         while (i <= 75)
         {
-            /*
-            this.sexTip.push 
-            (game.Texture.fromFrame ('SexTips_10_00000.png'));
-            */
-        //}
+            if (i < 10)
+            {
+                game.addAsset('SexTips_10_0000' + i + '.png');
+                sexTip.push(game.Texture.fromAsset(
+                    'SexTips_10_0000' + i + '.png'));
+            }
+            else
+            {
+                game.addAsset('SexTips_10_000' + i + '.png');
+                sexTip.push(game.Texture.fromAsset(
+                    'SexTips_10_000' + i + '.png'));
+            }
+            
+            i+=1;
+        }
+        
+        this.sprite = new game.Animation(sexTip);
+        
+        this.sprite.addTo(this.stage);
+        
+        this.sprite.play();
         
         /*
         this.runAnim = [game.Texture.fromFrame('run01.png'),    

@@ -7,7 +7,7 @@ game.config = {
         scale: true,
         center: true,
         resize: false,
-        startScene: "Title",
+        startScene: "Main",
     },
 
     mobile: {
