@@ -8,6 +8,12 @@ game.createScene('Main', {
     
     init: function() 
     {
+        var video = document.getElementById('video');
+        if (video != null)
+        {
+            video.play();
+        }
+        
         /*
         this.sexTip = [game.Texture.fromFrame ('SexTips_10_00000.png')];
         var i = 0;
