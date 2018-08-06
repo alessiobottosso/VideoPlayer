@@ -3,13 +3,14 @@ game.module(
 )
 .body(function() {
     
-game.addAsset('button.png');
+//game.addAsset('button.png');
 
 game.createScene('Title', {
     backgroundColor: 'transparent',
     
     init: function() 
     {
+        /*
         var button = new game.Button('button.png', function()
         {
             game.system.setScene('Main');
@@ -18,6 +19,12 @@ game.createScene('Title', {
         button.sprite.position.x = game.width / 2;
         button.sprite.position.y = 900;
         button.sprite.addTo(this.stage);
+        */
+    },
+    
+    mouseup: function()
+    {
+        game.system.setScene('Main');
     }
 });
 
