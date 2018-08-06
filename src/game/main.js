@@ -2,6 +2,58 @@ game.module(
     'game.main'
 )
 .body(function() {
+    
+game.addAsset('button.png');
+
+game.createScene('Title', {
+    backgroundColor: 'transparent',
+    
+    init: function() 
+    {
+        var button = new game.Button('button.png', function()
+        {
+            game.system.setScene('Main');
+        });
+        
+        button.sprite.position.x = game.width / 2;
+        button.sprite.position.y = 900;
+        button.sprite.addTo(this.stage);
+    }
+});
+
+game.createClass('Button', {
+    init: function(texture, callback) 
+    {
+        this.callback = callback;
+        this.sprite = new game.Sprite(texture);
+        this.sprite.anchorCenter();
+        this.sprite.interactive = true;
+        this.sprite.mousedown = this.mousedown.bind(this);
+        this.sprite.mouseup = this.mouseup.bind(this);
+        this.sprite.mouseupoutside = this.mouseup.bind(this);
+        this.sprite.click = this.click.bind(this);
+    },
+    
+    mousedown: function()
+    {
+        this.sprite.scale.x = 0.9;
+        this.sprite.scale.y = 0.9;
+    },
+    
+    mouseup: function()
+    {
+        this.sprite.scale.x = 1;
+        this.sprite.scale.y = 1;
+    },
+    
+    click: function()
+    {
+        if (typeof this.callback === 'function')
+        {
+            this.callback();
+        }
+    }
+}),
 
 game.createScene('Main', {
     backgroundColor: 'transparent',
